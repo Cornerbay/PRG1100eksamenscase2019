@@ -34,24 +34,24 @@ if (isset($_POST["finnHotellKnapp"]))
 		<?php
 	}
 	
-	if (isset($_POST["endreHotellKnapp"])) 
-		{
-			
-			$hotellnavn=$_POST["hotellnavn"];
-			$sted=$_POST["sted"];
+if (isset($_POST["endreHotellKnapp"])) 
+	{
+		
+		$hotellnavn=utf8_decode($_POST["hotellnavn"]);
+		$sted=utf8_decode($_POST["sted"]);
 
-			if (!trim($sted)) 
-				{
-					// echo '<script>console.log("hei2")</script>';
-					echo utf8_encode("Du må fylle ut klassenavn");
-				}
-			else
-				{
-					$sqlSetning = "UPDATE hotell SET sted='$sted' WHERE hotellnavn='$hotellnavn';";
-					mysqli_query($db,$sqlSetning) or die ("ikke mulig å endre database-server"); /*trenger ikke å sette denne inn i en variabel som ovenfor fordi resultatet er ikke nødvendig fordi man ikke bruker det videre*/
-         			print ("Hotell $hotellnavn er nå endret til sted: $sted"); 
-				}
-		}
+		if (!trim($sted)) 
+			{
+				// echo '<script>console.log("hei2")</script>';
+				echo utf8_encode("Du må fylle ut klassenavn");
+			}
+		else
+			{
+				$sqlSetning = "UPDATE hotell SET sted='$sted' WHERE hotellnavn='$hotellnavn';";
+				mysqli_query($db,$sqlSetning) or die ("ikke mulig å endre database-server"); /*trenger ikke å sette denne inn i en variabel som ovenfor fordi resultatet er ikke nødvendig fordi man ikke bruker det videre*/
+     			print utf8_encode("Hotell $hotellnavn er n&aring endret til sted: $sted"); 
+			}
+	}
 
 
 
@@ -64,7 +64,7 @@ if (isset($_POST["finnHotellKnapp"]))
 	<select name="velgRomtype" id="velgRomtype">
 		<?php listeboksHotellromtype(); ?>
 	</select>
-	<input type="submit" name="visRomtypeKnapp" id="visRomtypeKnapp">
+	<input type="submit" name="visRomtypeKnapp" id="visRomtypeKnapp" value="Trykk for å endre romtype">
 </form>
 
 <?php
@@ -73,25 +73,26 @@ if (isset($_POST['visRomtypeKnapp'])) {
 	$romtype = $_POST['velgRomtype'];
 	?>
 	<form method="post" name="endreRomtypeSkjema" id="endreRomtypeSkjema">
-		<input type="text" name="romtypeEndring" id="romtypeEndring" value="<?php echo "$romtype"?>">
-		<input type="submit" name="endreRomtypeKnapp" id="endreRomtypeKnapp">
+		Gammel romtype: <input type="text" name="romtypeGammel" id="romtypeGammel" value="<?php echo "$romtype"?>" readonly><br>
+		Ny romtype: <input type="text" name="romtypeEndring" id="romtypeEndring" ><br>
+		<input type="submit" name="endreRomtypeKnapp" id="endreRomtypeKnapp" value="Endre romtype">
 	</form>
 
 
 	<?php
-	if (isset($_POST['endreRomtypeKnapp'])) {
-		$romtypeEndret = $_POST['romtypeEndring'];
+}
 
-		if (!trim($romtype)) {
-			echo "Du må fylle inn feltet";
-		}else{
-			$sqlSetning = "UPDATE romtype SET romtype = '$romtypeEndret' WHERE romtype = '$romtype';";
-			mysqli_query($db,$sqlSetning) OR die("Kan ikke endre grunnet at det finnes en annen tabell koblet mot denne verdien");
-			echo "Romtype $romtype er nå endret til <b>$romtypeEndret</b>";
-		}
+if (isset($_POST['endreRomtypeKnapp'])) {
+	$romtypeEndret = $_POST['romtypeEndring'];
+	$romtype = $_POST['romtypeGammel'];
+	
+	if (!trim($romtypeEndret)) {
+		echo "Du må fylle inn feltet";
+	}else{
+		$sqlSetning = "UPDATE romtype SET romtype = '$romtypeEndret' WHERE romtype = '$romtype';";
+		mysqli_query($db,$sqlSetning) OR die ("Kan ikke endre grunnet at det finnes en annen tabell koblet mot denne verdien");
+		print ("Romtype $romtype er nå endret til <b>$romtypeEndret</b>");
 	}
-
-
 }
 
 
