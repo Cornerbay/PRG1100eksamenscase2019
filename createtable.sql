@@ -1,52 +1,58 @@
-CREATE TABLE innlogging(
-	brukernavn VARCHAR (40) NOT NULL,
-	passord VARCHAR (255) NOT NULL,
-	PRIMARY KEY (brukernavn)
+CREATE TABLE hotell(
+	hotellnavn VARCHAR (255) NOT NULL,
+	sted VARCHAR (255) NOT NULL,
+	PRIMARY KEY (hotellnavn)
 );
 
-CREATE TABLE klasse(
-	klassekode CHAR(3) NOT NULL,
-    klassenavn VARCHAR(50) NOT NULL,
-    PRIMARY KEY (klassekode)
+CREATE TABLE romtype(
+	romtype VARCHAR(50) NOT NULL,
+    PRIMARY KEY (romtype)
 );
 
-CREATE TABLE bilde(
-	bildenr INT NOT NULL,
-	opplastingsdato DATE NOT NULL,
-	filnavn VARCHAR(50) NOT NULL,
-	beskrivelse VARCHAR(50) NOT NULL,
-	PRIMARY KEY (bildenr)
+CREATE TABLE hotellromtype(
+	hotellnavn VARCHAR(255) NOT NULL,
+	romtype VARCHAR(255) NOT NULL,
+	antallrom INT NOT NULL,
+	PRIMARY KEY (hotellnavn,romtype),
+	FOREIGN KEY (hotellnavn) REFERENCES hotell(hotellnavn),
+	FOREIGN KEY (romtype) REFERENCES romtype(romtype)
 );
 
-CREATE TABLE student(
-	brukernavn CHAR(4) NOT NULL,
-	fornavn VARCHAR(30) NOT NULL,
-	etternavn VARCHAR(30) NOT NULL,
-	klassekode CHAR(3) NOT NULL,
-	`neste leveringsfrist` DATE NOT NULL,
-	bildenr INT NOT NULL,
-    PRIMARY KEY (brukernavn),
-    FOREIGN KEY (klassekode) REFERENCES klasse(klassekode),
-    FOREIGN KEY (bildenr) REFERENCES bilde(bildenr)
+CREATE TABLE rom(
+	hotellnavn VARCHAR(255) NOT NULL,
+	romtype VARCHAR(255) NOT NULL,
+	romnr INT NOT NULL,
+	PRIMARY KEY (hotellnavn, romnr),
+	FOREIGN KEY (hotellnavn,romtype) REFERENCES hotellromtype
 );
 
 
+INSERT INTO hotell
+VALUES ('grand hotel oslo', 'oslo'),
+('hotel klubben tønsberg', 'tønsberg'),
+('radisson blu gardermoen', 'ullensaker');
 
-INSERT INTO klasse
-VALUES ('IT1','IT og informasjonssystemer 1. år'),
-('IT2','IT og informasjonssystemer 2. år'),
-('IT3','IT og informasjonssystemer 3. år');
+INSERT INTO romtype
+VALUES ('enkeltrom'),
+('dobbeltrom'),
+('familierom'),
+('suite');
 
-INSERT INTO bilde
-VALUES (001,'2018-03-01','sm.jpg','flott bilde av Shegaw'),
-(002,'2018-04-01','gb.jpg','grusomt bilde av Geir'),
-(003,'2018-04-15','mj.jpg','Marius i solnedgang');
+INSERT INTO hotellromtype
+VALUES ('grand hotel oslo', 'enkeltrom', 50),
+('grand hotel oslo', 'dobbeltrom', 200),
+('grand hotel oslo', 'suite', 10),
+('hotel klubben tønsberg', 'enkeltrom', 10),
+('hotel klubben tønsberg', 'dobbeltrom', 150),
+('hotel klubben tønsberg', 'familierom', 50);
 
-INSERT INTO student
-VALUES ('gb','Geir','Bjarvin','IT1','2018-03-01',002),
-('mj','Marius','Johannessen','IT1','2018-03-01',003),
-('sm','Shegaw','Mengiste','IT2','2018-05-01',001);
-
+INSERT INTO rom
+VALUES ('grand hotel oslo', 'enkeltrom', 101),
+('grand hotel oslo', 'enkeltrom', 102),
+('grand hotel oslo', 'enkeltrom', 103),
+('grand hotel oslo', 'dobbeltrom', 201),
+('grand hotel oslo', 'dobbeltrom', 202),
+('grand hotel oslo', 'dobbeltrom', 203);
 
 /* spørring */
 
