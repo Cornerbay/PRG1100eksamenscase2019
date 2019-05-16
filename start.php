@@ -48,9 +48,9 @@ if (!$innloggetBruker) {
       <a href=""><li><p>Endre Hotellbestilling</p></li></a>
       <a href=""><li><p>Slett Hotellbestilling</p></li></a>
       <h3>Vedlikeholdsapplikasjon</h3>
-      <a href="registrer.php"><li><p>Registrer Data</p></li></a>
-      <a href=""><li><p>Vis Data</p></li></a>
-      <a href=""><li><p>Endre Data</p></li></a>
+      <a href="adminregistrer.php"><li><p>Registrer Data</p></li></a>
+      <a href="adminvisdata.php"><li><p>Vis Data</p></li></a>
+      <a href="adminendre.php"><li><p>Endre Data</p></li></a>
       <a href=""><li><p>Slette Data</p></li></a>
       <a href=""><li><p>Se registrerte Brukere</p></li></a>
       <a href=""><li><p>Registrerte Hotellbestillinger</p></li></a>    
