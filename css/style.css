@@ -1,0 +1,237 @@
+body  {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	margin: 0; 
+	padding: 0;
+	text-align: center;
+	color: #000000;
+}
+
+
+header { 
+	background: #555;  /* bakgrunnsfarge */
+	padding: 0 15px;  /* topp-padding og venstre-padding */
+	color: white;
+} 
+
+article {
+	margin: 0 1.5em 0 12em; 
+}
+
+footer { 
+	background: #555;  /* bakgrunnsfarge */
+	padding: 0 15px;  /* topp-padding og venstre-padding */
+	color: white;
+}
+
+.myStyle #boks { 
+	background: #FFFFFF; /* bakgrunnsfarge */
+	margin: 0 auto; /* marger */
+	border: 0px #000000; /* bordertykkelse 0 */
+	text-align: left; /* venstrejustert tekst */
+} 
+
+.myStyle header h1 {
+	margin: 0; /* ingen marg rundt toppen */
+	padding: 10px 0; /* topp-padding og venstre-padding */
+}
+
+.myStyle nav {
+	float: left; /* venstrejustert */
+	width: 12em; /* menybredde */
+	background: lightgrey; /* bakgrunnsfarge */
+}
+
+.myStyle nav h3, .myStyle nav p {
+	margin: 0.1em; /* venstremarg i menyen */
+	/*margin-right: 0.1em;  /* høyremarg i menyen */
+
+}
+
+table img{
+	width: 20em;
+}
+
+.nav a p{
+	color: white;
+}
+
+.myStyle footer h5 {
+	margin: 0; /* ingen marg rundt bunnen */
+	padding: 10px 0; /* topp-padding og venstre-padding */
+}
+
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+ul li{
+	list-style-type: none;
+	background: #598392;
+	padding:0.1em;
+	margin: 0.2em 1em 0.2em 0;
+
+}
+
+#regklasse div ,#regstudenter div{
+	width: 150px;
+}
+
+
+.nav p, a,ul,li{
+	text-decoration: none;
+	color: white;
+}
+
+.nav a li:hover{
+	opacity: 0.7;
+}
+
+
+
+[data-tip] {
+	position:relative;
+
+}
+[data-tip]:before {
+	content:'';
+	/* hides the tooltip when not hovered */
+	display:none;
+	content:'';
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #1a1a1a;	
+	position:absolute;
+	top:30px;
+	left:35px;
+	z-index:8;
+	font-size:0;
+	line-height:0;
+	width:0;
+	height:0;
+}
+[data-tip]:after {
+	display:none;
+	content:attr(data-tip);
+	position:absolute;
+	top:35px;
+	left:0px;
+	padding:5px 8px;
+	background:#555;
+	color:#fff;
+	z-index:9;
+	font-size: 0.75em;
+	height:18px;
+	line-height:18px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	white-space:nowrap;
+	word-wrap:normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+	display:block;
+}
+
+#melding{
+	color: blue;
+}
+
+.error{
+	color: red;
+}
+
+.table a{
+	color:blue;
+}
+
+.table a:hover{
+	color:#FECD58;
+}
+
+.box {
+  display: grid;
+  width: 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.box :first-child {
+    align-self: center;
+}
+
+
+
+div.innlogging{
+	display: grid;
+	text-align: center;
+	background: #888;
+	margin-top: 50px;
+	padding:1em;
+	border: solid 0.5em;
+	border-color: #555;
+}
+
+.innlogging p{
+	color:white;
+}
+.innlogging{
+	color: white;
+}
+
+.innlogging a{
+	text-decoration: underline;
+	color: lightblue;
+}
+
+.innlogging a:hover{
+	text-decoration: underline;
+	color:lightyellow;
+}
+
+.innlogging a:visited{
+	text-decoration: underline;
+	color: purple;
+}
+
+.innlogging a:active{
+	text-decoration: underline;
+	color:maroon;
+}
+
+.innlogging input[type=text] select textarea input[type=password] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.innlogging label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.innlogging input[type=submit] input[type=reset] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+.innlogging input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2em;
+}
