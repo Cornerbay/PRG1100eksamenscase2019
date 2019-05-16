@@ -245,4 +245,58 @@ function sjekkBrukernavnPassord($brukernavn,$passord)
   return $lovligBruker;
 }
 
+
+function listeboksHotellSted()
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT * FROM hotell ORDER BY sted;";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+      $hotell=$rad["hotell"]; 
+      $sted=utf8_encode($rad["sted"]);
+
+      print("<option value='$sted'>$sted</option>");  /* ny verdi i listeboksen laget */
+    }
+}
+
+function listeboksHotellnavn()
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT * FROM hotell ORDER BY hotellnavn;";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+      $hotell=utf8_encode($rad["hotellnavn"]); 
+      $sted=utf8_encode($rad["sted"]);
+
+      print("<option value='$hotell'>$hotell</option>");  /* ny verdi i listeboksen laget */
+    }
+}
+
+function listeboksHotellromtype()
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT * FROM romtype ORDER BY romtype;";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+      $romtype=utf8_encode($rad["romtype"]); 
+
+      print("<option value='$romtype'>$romtype</option>");  /* ny verdi i listeboksen laget */
+    }
+}
+
 ?>

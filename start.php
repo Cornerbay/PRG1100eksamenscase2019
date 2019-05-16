@@ -1,6 +1,6 @@
 
 <?php
-  session_start();
+/*  session_start();
   @$innloggetBruker=$_SESSION["brukernavn"]; //@ for å slippe unødig warning
 
 if (!$innloggetBruker) {
@@ -12,7 +12,7 @@ if (!$innloggetBruker) {
 
 
 }
-
+*/
 
 ?>
  <div id='boks'>
@@ -37,22 +37,23 @@ if (!$innloggetBruker) {
     <nav class="nav">
       <ul>
       <a href="index.php"><li><h3>Meny</h3></li></a>
-      <h3>Klasse</h3>
-      <a href="regklasse.php"><li><p>Registrer Klasse</p></li></a>
-      <a href="endreklasse.php"><li><p>Endre Klasse</p></li></a>
-      <a href="visklasse.php"><li><p>Vis Klasse</p></li></a>
-      <a href="slettklasse.php"><li><p>Slett Klasse</p></li></a>
-      <a href="visklasseliste.php"><li><p>Vis Klasseliste</p></li></a>
-      <h3>Student</h3>   
-      <a href="regstudent.php"><li><p>Registrer Student</p></li></a>
-      <a href="endrestudent.php"><li><p>Endre Student</p></li></a>
-      <a href="visstudent.php"><li><p>Vis Student</p></li></a>
-      <a href="slettstudent.php"><li><p>Slett Student</p></li></a>
-      <h3>Bilde</h3>
-      <a href="registrerbilde.php"><li><p>Registrer Bilde</p></li></a>
-      <a href="visallebilder.php"><li><p>Vis Bilder</p></li></a>
-      <a href="endrebildebeskrivelse.php"><li><p>Endre Bildebeskrivelse</p></li></a>
-      <a href="slettbilde.php"><li><p>Slett Bilde</p></li></a>
+      <h3>Hoved</h3>
+      <a href="vishotell.php"><li><p>Vis Hotell</p></li></a>
+      <a href="visromtype.php"><li><p>Vis romtype</p></li></a>
+      <a href=""><li><p>Ledige rom</p></li></a>
+      <a href=""><li><p>Registrer</p></li></a>
+      <h3>Min Side</h3>   
+      <a href=""><li><p>Bestill</p></li></a>
+      <a href=""><li><p>Vis Hotellbestilling</p></li></a>
+      <a href=""><li><p>Endre Hotellbestilling</p></li></a>
+      <a href=""><li><p>Slett Hotellbestilling</p></li></a>
+      <h3>Vedlikeholdsapplikasjon</h3>
+      <a href="registrer.php"><li><p>Registrer Data</p></li></a>
+      <a href=""><li><p>Vis Data</p></li></a>
+      <a href=""><li><p>Endre Data</p></li></a>
+      <a href=""><li><p>Slette Data</p></li></a>
+      <a href=""><li><p>Se registrerte Brukere</p></li></a>
+      <a href=""><li><p>Registrerte Hotellbestillinger</p></li></a>    
       <h3>Søk</h3>   
       <a href="sokidatabase.php"><li><p>Søk i databasen</p></li></a>
       <br>

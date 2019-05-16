@@ -23,7 +23,7 @@ CREATE TABLE rom(
 	romtype VARCHAR(255) NOT NULL,
 	romnr INT NOT NULL,
 	PRIMARY KEY (hotellnavn, romnr),
-	FOREIGN KEY (hotellnavn,romtype) REFERENCES hotellromtype
+	FOREIGN KEY (hotellnavn,romtype) REFERENCES hotellromtype(hotellnavn,romtype)
 );
 
 
@@ -57,9 +57,10 @@ VALUES ('grand hotel oslo', 'enkeltrom', 101),
 /* spørring */
 
 
-SELECT s.fornavn, s.etternavn, b.filnavn
-FROM student AS s 
-  INNER JOIN bilde AS b
-  ON s.bildenr = b.bildenr 
-WHERE 
-  s.klassekode='IT1';
+/*Vis romtype*/
+SELECT r.romtype
+FROM romtype AS r
+	INNER JOIN hotellromtype AS hr
+	ON r.romtype = hr.romtype
+WHERE
+	hr.hotellnavn='grand hotel oslo';
