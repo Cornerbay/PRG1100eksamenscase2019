@@ -27,8 +27,8 @@ if (isset($_POST['visHotellKnapp'])) {
 	for ($r=1;$r<=$antallRader;$r++) 
 		{ 
 			$rad=mysqli_fetch_array($sqlResultat,MYSQLI_ASSOC);
-			$hotellnavn=utf8_encode($rad['hotellnavn']); 
-			$sted=utf8_encode($rad['sted']); 
+			$hotellnavn=$rad['hotellnavn']; 
+			$sted=$rad['sted']; 
 
 			//utf8_encode for at den skal vise spesialtegn som "å" vanlig.
 			print("<tr> <td> $hotellnavn </td> <td> $sted </td></tr>");
@@ -60,7 +60,7 @@ if (isset($_POST['visRomtypeKnapp'])) {
 	for ($r=1;$r<=$antallRader;$r++) 
 		{ 
 			$rad=mysqli_fetch_array($sqlResultat,MYSQLI_ASSOC);
-			$romtype=utf8_encode($rad['romtype']); 
+			$romtype=$rad['romtype']; 
 
 			//utf8_encode for at den skal vise spesialtegn som "å" vanlig.
 			print("<tr> <td> $romtype </td></tr>");
@@ -95,9 +95,9 @@ if (isset($_POST['visHotellRomtypeKnapp'])) {
 	for ($r=1;$r<=$antallRader;$r++) 
 		{ 
 			$rad=mysqli_fetch_array($sqlResultat,MYSQLI_ASSOC);
-			$hotellnavn=utf8_encode($rad['hotellnavn']); 
-			$romtype=utf8_encode($rad['romtype']); 
-			$antallrom=utf8_encode($rad['antallrom']);
+			$hotellnavn=$rad['hotellnavn']; 
+			$romtype=$rad['romtype']; 
+			$antallrom=$rad['antallrom'];
 
 			//utf8_encode for at den skal vise spesialtegn som "å" vanlig.
 			print("<tr> <td> $hotellnavn </td> <td> $romtype </td><td> $antallrom </td></tr>");
@@ -133,9 +133,9 @@ if (isset($_POST['visHotellRomKnapp'])) {
 	for ($r=1;$r<=$antallRader;$r++) 
 		{ 
 			$rad=mysqli_fetch_array($sqlResultat,MYSQLI_ASSOC);
-			$hotellnavn=utf8_encode($rad['hotellnavn']); 
-			$romtype=utf8_encode($rad['romtype']); 
-			$romnr=utf8_encode($rad['romnr']);
+			$hotellnavn=$rad['hotellnavn']; 
+			$romtype=$rad['romtype']; 
+			$romnr=$rad['romnr'];
 
 			//utf8_encode for at den skal vise spesialtegn som "å" vanlig.
 			print("<tr> <td> $hotellnavn </td> <td> $romtype </td><td> $romnr </td></tr>");

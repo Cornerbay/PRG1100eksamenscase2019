@@ -64,3 +64,4 @@ FROM romtype AS r
 	ON r.romtype = hr.romtype
 WHERE
 	hr.hotellnavn='grand hotel oslo';
+

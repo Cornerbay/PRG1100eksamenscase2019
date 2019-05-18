@@ -110,8 +110,8 @@ Antall rom <input type="text" name="antallRom" id="antallRom"><br>
   if (isset($_POST ["registrerHotellRomtypeKnapp"]))
     {
       
-      $hotellRomtypeNavn  = $_POST["hotellRomtypeNavn"];
-      $hotellRomtype      = $_POST["hotellRomtype"];
+      $hotellRomtypeNavn  = utf8_decode($_POST["hotellRomtypeNavn"]);
+      $hotellRomtype      = utf8_decode($_POST["hotellRomtype"]);
       $antallRom          = $_POST["antallRom"];
      
       if (!$antallRom || !$hotellRomtypeNavn || !$hotellRomtype)

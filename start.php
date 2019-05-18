@@ -34,6 +34,7 @@ if (!$innloggetBruker) {
     <?php include "dbtilkobling.php"; ?>
     <?php include "dynamiskefunksjoner.php"; ?>
 
+
     <nav class="nav">
       <ul>
       <a href="index.php"><li><h3>Meny</h3></li></a>
