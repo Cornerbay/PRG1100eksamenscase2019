@@ -112,7 +112,7 @@ Hotellnavn <select name="hotellRomtypeNavn" id="hotellRomtypeNavn">
   <?php listeBoksHotellnavn();?>
 </select><br>
 Hotellromtype <select name="hotellRomtype" id="hotellRomtype">
-  <?php listeBoksHotellromtype();?>
+  <?php listeboksRomtype();?>
 </select><br>
 Antall rom <input type="text" name="antallRom" id="antallRom"><br>
 <input type="submit" name="registrerHotellRomtypeKnapp" id="registrerHotellRomtypeKnapp" value="Registrer">
@@ -123,8 +123,8 @@ Antall rom <input type="text" name="antallRom" id="antallRom"><br>
   if (isset($_POST ["registrerHotellRomtypeKnapp"]))
     {
       
-      $hotellRomtypeNavn  = utf8_decode($_POST["hotellRomtypeNavn"]);
-      $hotellRomtype      = utf8_decode($_POST["hotellRomtype"]);
+      $hotellRomtypeNavn  = $_POST["hotellRomtypeNavn"];
+      $hotellRomtype      = $_POST["hotellRomtype"];
       $antallRom          = $_POST["antallRom"];
      
       if (!$antallRom || !$hotellRomtypeNavn || !$hotellRomtype)
@@ -165,7 +165,7 @@ Hotellnavn <select name="hotellromNavn" id="hotellromNavn">
   <?php listeBoksHotellnavn();?>
 </select><br>
 Hotellromtype <select name="hotellromRomtype" id="hotellromRomtype">
-  <?php listeBoksHotellromtype();?>
+  <?php listeboksRomtype();?>
 </select><br>
 Romnr <input type="text" name="romnr" id="romnr"><br>
 <input type="submit" name="registrerHotellromKnapp" id="registrerHotellromKnapp" value="Registrer">

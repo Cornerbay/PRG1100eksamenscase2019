@@ -244,9 +244,9 @@ function sjekkOmRomErLedig($hotellnavn,$romnr,$datoFra,$datoTil)
   include "dbtilkobling.php";
   $sqlSetning= "SELECT * FROM bestilling 
                 WHERE hotellnavn = '$hotellnavn' AND romnr = '$romnr' AND 
-                dato_fra NOT BETWEEN '$datoFra' AND '$datoTil' 
+                dato_fra BETWEEN '$datoFra' AND '$datoTil' 
                 AND 
-                dato_til  NOT BETWEEN '$datoFra' AND '$datoTil';";
+                dato_til  BETWEEN '$datoFra' AND '$datoTil';";
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
       
   $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
@@ -274,10 +274,10 @@ function hotellRomnrArray($hotellnavn,$romtype)
   return $hotellRomnrArray;
 }
 
-function listeboksBestilling()
+function listeboksBestilling($brukernavn)
 {
   include "dbtilkobling.php";      
-  $sqlSetning="SELECT * FROM bestilling  ORDER BY dato_fra;";
+  $sqlSetning="SELECT * FROM bestilling WHERE brukernavn = '$brukernavn' ORDER BY dato_fra;";
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen, listeboksBestilling"); 
       
   $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
@@ -312,6 +312,27 @@ function hentBestilling($bestillingsID)
   }
   return $bestilling;
 }
+
+function listeboksHotellromnrRomtype($hotellnavn)
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT DISTINCT romtype FROM rom WHERE hotellnavn='$hotellnavn' ORDER BY hotellnavn;";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+      $hotellnavn = $rad["hotellnavn"]; 
+      $romtype    = $rad["romtype"];
+      $romnr  = $rad["romnr"];
+
+      print("<option value='$romtype'>$romtype</option>");  /* ny verdi i listeboksen laget */
+    }
+}
+
+
 
 
 ?>

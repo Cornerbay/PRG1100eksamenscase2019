@@ -40,20 +40,26 @@ if (!$innloggetBruker) {
       <h3>Hoved</h3>
       <a href="vishotell.php"><li><p>Vis Hotell</p></li></a>
       <a href="visromtype.php"><li><p>Vis romtype</p></li></a>
-      <a href=""><li><p>Ledige rom</p></li></a>
+      <a href="finnledigrom.php"><li><p>Ledige rom</p></li></a>
       <a href="registrerbruker.php"><li><p>Registrer Bruker</p></li></a>
       <h3>Min Side</h3>   
       <a href="bestilling.php"><li><p>Bestill</p></li></a>
       <a href="visbestilling.php"><li><p>Vis Hotellbestilling</p></li></a>
       <a href="endrebestilling.php"><li><p>Endre Hotellbestilling</p></li></a>
-      <a href=""><li><p>Slett Hotellbestilling</p></li></a>
-      <h3>Vedlikeholdsapplikasjon</h3>
-      <a href="adminregistrer.php"><li><p>Registrer Data</p></li></a>
-      <a href="adminvisdata.php"><li><p>Vis Data</p></li></a>
-      <a href="adminendre.php"><li><p>Endre Data</p></li></a>
-      <a href=""><li><p>Slette Data</p></li></a>
-      <a href=""><li><p>Se registrerte Brukere</p></li></a>
-      <a href=""><li><p>Registrerte Hotellbestillinger</p></li></a>    
+      <a href="slettbestilling.php"><li><p>Slett Hotellbestilling</p></li></a>
+      <?php
+      if (@$innloggetBruker['rolle']=="admin") {
+        ?>
+        <h3>Vedlikeholdsapplikasjon</h3>
+        <a href="adminregistrer.php"><li><p>Registrer Data</p></li></a>
+        <a href="adminvisdata.php"><li><p>Vis Data</p></li></a>
+        <a href="adminendre.php"><li><p>Endre Data</p></li></a>
+        <a href=""><li><p>Slette Data</p></li></a>
+        <a href=""><li><p>Se registrerte Brukere</p></li></a>
+        <a href=""><li><p>Registrerte Hotellbestillinger</p></li></a>  
+        <?php
+      }
+      ?>  
       <h3>Søk</h3>   
       <a href="sokidatabase.php"><li><p>Søk i databasen</p></li></a>
       <br>
