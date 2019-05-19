@@ -87,48 +87,6 @@ WHERE
 	hr.hotellnavn='grand hotel oslo';
 
 
-SELECT *
-FROM bestilling AS b
-	INNER JOIN rom AS r
-	ON b.romnr = r.romnr
-WHERE
-	b.hotellnavn='grand hotel oslo'
-	AND
-	b.dato_fra NOT BETWEEN '2019-05-15' AND '2019-05-16'
-	AND
-	b.dato_til NOT BETWEEN '2019-05-15' AND '2019-05-16';
-
-
-SELECT *
-FROM rom AS r
-	INNER JOIN bestilling AS b
-	ON r.romnr = b.romnr
-WHERE
-	b.hotellnavn='grand hotel oslo'
-	AND
-	r.hotellnavn='grand hotel oslo'
-	AND
-	b.dato_fra NOT BETWEEN '2019-05-15' AND '2019-05-16'
-	AND
-	b.dato_til NOT BETWEEN '2019-05-15' AND '2019-05-16';
-
-SELECT r.romnr
-FROM rom AS r
-	RIGHT OUTER JOIN bestilling AS b
-	ON r.hotellnavn = b.hotellnavn AND r.romnr=b.romnr
-WHERE
-	b.hotellnavn='hotel klubben tønsberg'
-	AND
-	b.dato_fra NOT BETWEEN '2019-05-15' AND '2019-05-16'
-	AND
-	b.dato_til NOT BETWEEN '2019-05-15' AND '2019-05-16';
-
-
-SELECT *
-FROM rom AS r
-	FULL OUTER JOIN bestilling AS b
-	ON r.hotellnavn = b.hotellnavn;
-
 
 SELECT romnr
 FROM rom

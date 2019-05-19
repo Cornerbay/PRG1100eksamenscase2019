@@ -13,6 +13,8 @@
   }
 ?>
 
+<h3>Bestill hotelrom</h3>
+
 <form method="post" name="finnHotellSkjema" id="finnHotellSkjema">
 	<select name="hotellnavn" id="hotellnavn">
 		<?php listeboksHotellromnavn(); ?>
@@ -45,6 +47,12 @@ if (isset($_POST['bestillingsKnapp'])) {
 	$datoFra 		= $_POST['datofra'];
 	$datoTil 		= $_POST['datotil'];
 	$brukernavn 	= $_SESSION['brukernavn'];
+
+	if ($datoFra < date("Y-m-d") || $datoTil < date("Y-m-d")) {
+		echo "Datoen du har valgt er før dagens dato";
+		die ("<meta http-equiv='refresh' content='2'>");
+
+	}
 
 	$bestillingSjekk = false;
 

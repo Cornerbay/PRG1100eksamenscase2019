@@ -54,9 +54,9 @@ if (!$innloggetBruker) {
         <a href="adminregistrer.php"><li><p>Registrer Data</p></li></a>
         <a href="adminvisdata.php"><li><p>Vis Data</p></li></a>
         <a href="adminendre.php"><li><p>Endre Data</p></li></a>
-        <a href=""><li><p>Slette Data</p></li></a>
-        <a href=""><li><p>Se registrerte Brukere</p></li></a>
-        <a href=""><li><p>Registrerte Hotellbestillinger</p></li></a>  
+        <a href="adminslett.php"><li><p>Slette Data</p></li></a>
+        <a href="adminvisbrukere.php"><li><p>Se registrerte Brukere</p></li></a>
+        <a href="adminvisbestillinger.php"><li><p>Registrerte Hotellbestillinger</p></li></a>  
         <?php
       }
       ?>  
