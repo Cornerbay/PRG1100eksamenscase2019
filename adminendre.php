@@ -1,5 +1,18 @@
 <?php include "start.php"; ?>
 
+<?php //Sjekk hvilken rolle bruker har
+  @$innloggetBruker=$_SESSION; //@ for å slippe unødig warning
+  if ($innloggetBruker['rolle']!="admin") {
+    print("Denne siden krever innlogging!<br>");
+
+    print("Du vil bli sendt til innlogging om 2 sekunder");
+
+    include "slutt.html";
+
+    die ("<meta http-equiv='refresh' content='2;url=innlogging.php'>");
+  }
+?>
+
 <h3>Endre Hotellsted</h3>
 <form method="post" name="finnHotellSkjema" id="finnHotellSkjema">
 
@@ -212,7 +225,6 @@ if (isset($_POST['visHotellromnavnKnapp2'])) {
 		
 
 	</form>
-
 
 	<?php
 }

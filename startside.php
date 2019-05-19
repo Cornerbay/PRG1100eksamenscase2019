@@ -3,7 +3,8 @@
 			if (!$innloggetBruker){
 				print("<h3>Velkommen til Bjarum hotels! </h3>");
 			}else{
-				print("<h3>Velkommen til Bjarum hotels, $innloggetBruker! </h3>"); 
+				$brukernavn = $innloggetBruker["brukernavn"];
+				print("<h3>Velkommen til Bjarum hotels, $brukernavn! </h3>"); 
 			}
 		?>
 

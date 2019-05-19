@@ -21,7 +21,7 @@ function sjekkBrukernavnPassord($brukernavn,$passord)
 
   $lovligBruker=true;
 
-  $sqlSetning="SELECT * FROM innlogging WHERE brukernavn='$brukernavn';";
+  $sqlSetning="SELECT * FROM bruker WHERE brukernavn='$brukernavn';";
   $sqlResultat=mysqli_query($db,$sqlSetning);  /* SQL-setning sendt til database-serveren */
   if (!$sqlResultat) 
     {
@@ -42,6 +42,23 @@ function sjekkBrukernavnPassord($brukernavn,$passord)
 
   return $lovligBruker;
 }
+
+function brukerArray($brukernavn)
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT * FROM bruker WHERE brukernavn='$brukernavn';";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $brukerArray=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+    }
+    return $brukerArray;
+}
+
+
 
 
 function listeboksHotellSted()
@@ -221,4 +238,80 @@ function listeboksHotellromnrArray($hotellnavn,$romnr)
     }
       return $rad; //returner array med verdier fra alle kolonnnene
 }
+
+function sjekkOmRomErLedig($hotellnavn,$romnr,$datoFra,$datoTil)
+{
+  include "dbtilkobling.php";
+  $sqlSetning= "SELECT * FROM bestilling 
+                WHERE hotellnavn = '$hotellnavn' AND romnr = '$romnr' AND 
+                dato_fra NOT BETWEEN '$datoFra' AND '$datoTil' 
+                AND 
+                dato_til  NOT BETWEEN '$datoFra' AND '$datoTil';";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  if (!$antallRader) {
+    return true;
+  }else
+  {
+    return false;
+  }
+}
+
+function hotellRomnrArray($hotellnavn,$romtype)
+{
+  include "dbtilkobling.php";
+  $sqlSetning="SELECT romnr FROM rom WHERE hotellnavn='$hotellnavn' AND romtype='$romtype';";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("hotellRomnrArray");
+
+  $antallRader=mysqli_num_rows($sqlResultat);
+  $hotellRomnrArray = array();
+  for ($i=1; $i <= $antallRader; $i++) { 
+    $row = mysqli_fetch_array($sqlResultat);
+    $hotellRomnrArray[$i-1] = $row[0];
+  }
+  return $hotellRomnrArray;
+}
+
+function listeboksBestilling()
+{
+  include "dbtilkobling.php";      
+  $sqlSetning="SELECT * FROM bestilling  ORDER BY dato_fra;";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen, listeboksBestilling"); 
+      
+  $antallRader=mysqli_num_rows($sqlResultat);  /* antall rader i resultatet beregnet */
+
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
+      $hotellnavn     = $rad["hotellnavn"];
+      $romtype        = $rad['romtype'];
+      $datoFra        = $rad['dato_fra'];
+      $datoTil        = $rad['dato_til'];
+      $bestillingsID  = $rad['bestillings_id'];
+
+      print("<option value='$bestillingsID'>Bestilling nr $bestillingsID</option>");  /* ny verdi i listeboksen laget */
+      print("<option disabled style='font-style:italic'>&nbsp;&nbsp;&nbsp;Hotell: $hotellnavn</option>");
+      print("<option disabled style='font-style:italic'>&nbsp;&nbsp;&nbsp;Romtype: $romtype</option>");
+      print("<option disabled style='font-style:italic'>&nbsp;&nbsp;&nbsp;Romnr: $romnr</option>");
+      print("<option disabled style='font-style:italic'>&nbsp;&nbsp;&nbsp;Dato: $datoFra - $datoTil</option>");    
+    }
+}
+
+function hentBestilling($bestillingsID)
+{
+  include "dbtilkobling.php";
+  $sqlSetning="SELECT * FROM bestilling WHERE bestillings_id ='$bestillingsID';";
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("Databasetrøbbel hentBestilling");
+
+  $antallRader=mysqli_num_rows($sqlResultat);
+
+  for ($i=1; $i <= $antallRader; $i++) { 
+    $bestilling = mysqli_fetch_array($sqlResultat);
+  }
+  return $bestilling;
+}
+
+
 ?>

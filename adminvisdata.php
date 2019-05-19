@@ -1,6 +1,19 @@
-<?php
-include "start.php";
+<?php include "start.php"; ?>
 
+<?php //Sjekk hvilken rolle bruker har
+  @$innloggetBruker=$_SESSION; //@ for å slippe unødig warning
+  if ($innloggetBruker['rolle']!="admin") {
+    print("Denne siden krever innlogging!<br>");
+
+    print("Du vil bli sendt til innlogging om 2 sekunder");
+
+    include "slutt.html";
+
+    die ("<meta http-equiv='refresh' content='2;url=innlogging.php'>");
+  }
+?>
+
+<?php
 print("<h3>Oversikt over alle registrerte hotelltabeller</h3>");
 
 include("dbtilkobling.php");

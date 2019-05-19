@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Innlogging</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-
+<?php include "start.php"; ?>
 <div class="box">  
   <div></div>
   <div class="innlogging">
@@ -26,10 +20,9 @@
   <?php
     if (isset($_POST ["logginnKnapp"]))
       {
-        include("dynamiskefunksjoner.php");
 
         $brukernavn=$_POST ["brukernavn"];
-        $passord=$_POST["passord"]; 
+        $passord=$_POST["passord"];
 
         if (!sjekkBrukernavnPassord($brukernavn,$passord)) /*Brukernavn/passord er ikke korrekt*/ 
           {
@@ -37,12 +30,15 @@
           }
         else /* brukernavn/passord er korrekt */
           {
+            $brukerArray=brukerArray($brukernavn);
             session_start();
-            $_SESSION["brukernavn"]=$brukernavn;
+            $_SESSION["brukernavn"]=$brukerArray['brukernavn'];
+            $_SESSION["rolle"]=$brukerArray['rolle'];
             print("<meta http-equiv='refresh' content='0;url=index.php'>");
           }
       }
   ?>
   </div>
 </div>
-</html>
+
+<?php include "slutt.html"; ?>

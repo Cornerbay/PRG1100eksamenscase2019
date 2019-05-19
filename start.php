@@ -1,18 +1,17 @@
 
 <?php
-/*  session_start();
-  @$innloggetBruker=$_SESSION["brukernavn"]; //@ for å slippe unødig warning
-
+  session_start();
+  @$innloggetBruker=$_SESSION; //@ for å slippe unødig warning
 if (!$innloggetBruker) {
-  print("Denne siden krever innlogging!<br>");
+/*  print("Denne siden krever innlogging!<br>");
 
   print("Du vil bli sendt til innlogging om 2 sekunder");
 
   die ("<meta http-equiv='refresh' content='2;url=innlogging.php'>");
 
-
-}
 */
+}
+
 
 ?>
  <div id='boks'>
@@ -29,7 +28,7 @@ if (!$innloggetBruker) {
       <body class="myStyle">
 
     <header>
-      <h1>Obligatorisk oppgave 2 PRG1100</h1>
+      <h1>Eksamenscase 2019 PRG1100</h1>
     </header>
     <?php include "dbtilkobling.php"; ?>
     <?php include "dynamiskefunksjoner.php"; ?>
@@ -42,11 +41,11 @@ if (!$innloggetBruker) {
       <a href="vishotell.php"><li><p>Vis Hotell</p></li></a>
       <a href="visromtype.php"><li><p>Vis romtype</p></li></a>
       <a href=""><li><p>Ledige rom</p></li></a>
-      <a href=""><li><p>Registrer</p></li></a>
+      <a href="registrerbruker.php"><li><p>Registrer Bruker</p></li></a>
       <h3>Min Side</h3>   
-      <a href=""><li><p>Bestill</p></li></a>
-      <a href=""><li><p>Vis Hotellbestilling</p></li></a>
-      <a href=""><li><p>Endre Hotellbestilling</p></li></a>
+      <a href="bestilling.php"><li><p>Bestill</p></li></a>
+      <a href="visbestilling.php"><li><p>Vis Hotellbestilling</p></li></a>
+      <a href="endrebestilling.php"><li><p>Endre Hotellbestilling</p></li></a>
       <a href=""><li><p>Slett Hotellbestilling</p></li></a>
       <h3>Vedlikeholdsapplikasjon</h3>
       <a href="adminregistrer.php"><li><p>Registrer Data</p></li></a>
@@ -58,6 +57,7 @@ if (!$innloggetBruker) {
       <h3>Søk</h3>   
       <a href="sokidatabase.php"><li><p>Søk i databasen</p></li></a>
       <br>
+      <a href="innlogging.php"><li><p>Logg inn</p></li></a>
       <a href="utlogging.php"><li><p>Logg ut</p></li></a>
       </ul>
     </nav>

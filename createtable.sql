@@ -26,6 +26,27 @@ CREATE TABLE rom(
 	FOREIGN KEY (hotellnavn,romtype) REFERENCES hotellromtype(hotellnavn,romtype)
 );
 
+CREATE TABLE bruker(
+	brukernavn 	VARCHAR(255) NOT NULL,
+	passord		VARCHAR(255) NOT NULL,
+	rolle		VARCHAR(255) NOT NULL,
+	PRIMARY KEY (brukernavn)
+);
+
+CREATE TABLE bestilling(
+	bestillings_id 	int NOT NULL AUTO_INCREMENT,
+	brukernavn 		VARCHAR(255) NOT NULL,
+	hotellnavn		VARCHAR(255) NOT NULL,
+	romtype			VARCHAR(255) NOT NULL,
+	romnr 			VARCHAR(255) NOT NULL,
+	dato_fra		DATE NOT NULL,
+	dato_til 		DATE NOT NULL,
+	PRIMARY KEY (bestillings_id),
+	FOREIGN KEY (hotellnavn,romtype) REFERENCES hotellromtype(hotellnavn,romtype),
+	FOREIGN KEY (hotellnavn, romtype) REFERENCES rom(hotellnavn,romtype),
+	FOREIGN KEY (brukernavn) REFERENCES bruker(brukernavn)
+);
+
 
 INSERT INTO hotell
 VALUES ('grand hotel oslo', 'oslo'),
