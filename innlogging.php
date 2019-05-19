@@ -1,3 +1,5 @@
+<!-- innlogging.php -->
+
 <?php include "start.php"; ?>
 <div class="box">  
   <div></div>

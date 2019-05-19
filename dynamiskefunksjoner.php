@@ -1,3 +1,5 @@
+<!-- dynamiskefunksjoner.php -->
+
 <?php   /*  dynamiske funksjoner */
 
 

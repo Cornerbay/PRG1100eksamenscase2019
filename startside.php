@@ -1,3 +1,4 @@
+<!-- startside.php -->
 <div> 
 		<?php
 			if (!$innloggetBruker){

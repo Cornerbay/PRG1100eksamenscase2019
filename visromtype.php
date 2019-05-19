@@ -1,3 +1,5 @@
+<!-- visromtype.php -->
+
 <?php
 include "start.php";
 
@@ -21,7 +23,7 @@ Velg et sted du ønsker å finne hotell:
 
 if (isset($_POST['submit'])) {
 
-	$hotell=utf8_decode($_POST['hotell']);
+	$hotell=$_POST['hotell'];
 	$sqlSetning		= "	SELECT r.romtype
 						FROM romtype AS r
 							INNER JOIN hotellromtype AS hr
@@ -42,7 +44,7 @@ if (isset($_POST['submit'])) {
 	for ($r=1;$r<=$antallRader;$r++) 
 		{ 
 			$rad=mysqli_fetch_array($sqlResultat,MYSQLI_NUM);
-			$hotellRomtype=utf8_encode($rad[0]); 
+			$hotellRomtype=$rad[0]; 
 
 			//utf8_encode for at den skal vise spesialtegn som "å" vanlig.
 			print("<tr> <td> $hotellRomtype </td></tr>");

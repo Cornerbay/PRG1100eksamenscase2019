@@ -1,3 +1,5 @@
+<!-- finnledigrom.php -->
+
 <?php include "start.php"; ?>
 
 <h3> Sjekk ledige rom på </h3>

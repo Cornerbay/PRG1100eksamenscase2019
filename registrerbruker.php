@@ -1,3 +1,5 @@
+<!-- registrerbruker.php -->
+
 <?php include "start.php"; ?>
 <?php  /* registrer-bruker  */
 /*

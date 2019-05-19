@@ -1,3 +1,5 @@
+<!-- utlogging.php -->
+
 <?php  /* utlogging  */
 /*
 /*  Programmet logger ut en bruker fra applikasjonen

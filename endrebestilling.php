@@ -1,3 +1,5 @@
+<!-- endrebestilling.php -->
+
 <?php include "start.php"; ?>
 
 <?php //Sjekk hvilken rolle bruker har

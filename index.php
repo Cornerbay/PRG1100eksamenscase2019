@@ -1,4 +1,4 @@
-
+<!-- index-php -->
 <?php include "start.php"; ?>
 <?php include "startside.php"; ?>
 
